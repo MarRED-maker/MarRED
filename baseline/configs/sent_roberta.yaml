@@ -1,0 +1,35 @@
+﻿# @package _global_
+
+datamodule:
+  dataset_dir: data
+  train_file: train.json
+  dev_file: dev.json
+  test_file: test.json
+  force_regeneration: false
+  train_batch_size: 16
+  test_batch_size: 32
+  neg_ratio: -1.0
+
+model:
+  model_name_or_path: ..\roberta-base
+  transformer_type: roberta
+  context_mode: sentence
+  max_seq_length: 256
+  max_words: 700
+  dropout: 0.1
+  threshold: 0.5
+  num_class: 10
+
+train:
+  seed: 13
+  epochs: 3
+  log_steps: 100
+  device: "cuda:0"
+  learning_rate: 2e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  max_grad_norm: 1.0
+
+output:
+  output_dir: ..\outputs\sent_roberta
+

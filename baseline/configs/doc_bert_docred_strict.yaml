@@ -1,0 +1,36 @@
+# @package _global_
+
+datamodule:
+  dataset_dir: data
+  train_file: train.json
+  dev_file: dev.json
+  test_file: test.json
+  force_regeneration: false
+  train_batch_size: 2
+  test_batch_size: 4
+  neg_ratio: -1.0
+
+model:
+  model_name_or_path: bert-base-uncased
+  transformer_type: bert
+  context_mode: document
+  training_unit: document
+  max_seq_length: 512
+  max_words: 700
+  dropout: 0.1
+  threshold: 0.5
+  num_class: 10
+
+train:
+  seed: 13
+  epochs: 3
+  log_steps: 100
+  eval_test_each_epoch: true
+  device: "cuda:0"
+  learning_rate: 2e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  max_grad_norm: 1.0
+
+output:
+  output_dir: ..\outputs\doc_bert_docred_strict
